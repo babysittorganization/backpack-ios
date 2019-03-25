@@ -23,25 +23,40 @@
 
 @implementation BPKAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [UINavigationBar appearance].tintColor = BPKColor.gray700;
-    [UINavigationBar appearance].titleTextAttributes =@{NSForegroundColorAttributeName: BPKColor.gray700};
+    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : BPKColor.gray700};
     if (@available(iOS 11.0, *)) {
-        [UINavigationBar appearance].largeTitleTextAttributes =@{NSForegroundColorAttributeName: BPKColor.gray700};
+        [UINavigationBar appearance].largeTitleTextAttributes = @{NSForegroundColorAttributeName : BPKColor.gray700};
     }
 
-    BPKLondonTheme *londTheme= [BPKLondonTheme new];
+    BPKDefaultTheme *defaultTheme = [BPKDefaultTheme new];
+    BPKLondonTheme *londTheme = [BPKLondonTheme new];
+    BPKDohaTheme *dohaTheme = [BPKDohaTheme new];
+    BPKHongKongTheme *hongKongTheme = [BPKHongKongTheme new];
 
-    [BPKTheme applyTheme:[BPKDefaultTheme new]];
+    id<BPKThemeDefinition> currentTheme = defaultTheme;
+
+    [BPKTheme applyTheme:defaultTheme];
     [BPKTheme applyTheme:londTheme];
-    [BPKTheme applyTheme:[BPKDohaTheme new]];
-    [BPKTheme applyTheme:[BPKHongKongTheme new]];
+    [BPKTheme applyTheme:dohaTheme];
+    [BPKTheme applyTheme:hongKongTheme];
 
-    UIView *themeContainer = [BPKTheme containerFor:londTheme];
-    BPKThemeContainerController *themeContainerController = [[BPKThemeContainerController alloc] initWithThemeContainer:themeContainer
-                                                                                           rootViewController:self.window.rootViewController];
+    NSString *savedTheme = [NSUserDefaults.standardUserDefaults valueForKey:@"theme"];
+
+    if ([savedTheme isEqual:@"London"]) {
+        currentTheme = londTheme;
+    } else if ([savedTheme isEqual:@"HongKong"]) {
+        currentTheme = hongKongTheme;
+    } else if ([savedTheme isEqual:@"Doha"]) {
+        currentTheme = dohaTheme;
+    }
+
+    UIView *themeContainer = [BPKTheme containerFor:currentTheme];
+    BPKThemeContainerController *themeContainerController =
+        [[BPKThemeContainerController alloc] initWithThemeContainer:themeContainer
+                                                 rootViewController:self.window.rootViewController];
     self.window.rootViewController = themeContainerController;
     [self.window makeKeyAndVisible];
 
