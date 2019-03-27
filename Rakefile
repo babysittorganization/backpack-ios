@@ -62,6 +62,11 @@ def repeat_on_fail(command, run_count = 1)
   end
 end
 
+def clang()
+  `find . -name "*.h" -exec clang-format -i {} \\;`
+  `find . -name "*.m" -exec clang-format -i {} \\;`
+end
+
 def install_pods_in_example_project()
   `(cd Example && bundle exec pod install)`
   $?.exitstatus == 0
@@ -87,13 +92,14 @@ task :test do
 end
 
 task :lint do
+  clang
+  abort red 'Clanging changed files.' unless check_pristine
   sh "bundle exec pod lib lint"
 end
 
 task ci: [:erase_devices, :all_checks]
 task all_checks: [:lint, :analyze, :test]
 
-# task release: :test do
 task release: :all_checks do
   abort red 'Must be on master branch' unless current_branch == 'master'
   abort red 'Must have push access to Backpack on CocoaPods trunk' unless has_trunk_push
