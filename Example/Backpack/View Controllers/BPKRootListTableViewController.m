@@ -31,6 +31,14 @@
 
     UIImage *largeSettingsIcon = [BPKIcon templateIconNamed:@"settings" size:BPKIconSizeLarge];
     self.settingsButton.image = largeSettingsIcon;
+
+    self.settingsButton.target = self;
+    self.settingsButton.action = @selector(didTapSettingsButton);
+}
+
+- (void)didTapSettingsButton {
+    // TODO LOGIC
+//    self.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
