@@ -19,13 +19,18 @@
 #import "BPKThemeContainerController.h"
 #import <Backpack/Common.h>
 
-
 NS_ASSUME_NONNULL_BEGIN
 @interface BPKThemeContainerController ()
 @property(nonatomic, strong) UIViewController *rootViewController;
 @end
 
 @implementation BPKThemeContainerController
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [super dealloc];
+}
 
 - (instancetype)initWithThemeContainer:(UIView *)container
                     rootViewController:(nonnull UIViewController *)rootViewController {
@@ -35,9 +40,22 @@ NS_ASSUME_NONNULL_BEGIN
         _themeActive = YES;
         _themeContainer = container;
         self.rootViewController = rootViewController;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveTheme:)
+                                                     name:@"ThemeContainerChanged"
+                                                   object:nil];
     }
 
     return self;
+}
+
+- (void) receiveTheme:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"ThemeContainerChanged"]){
+        NSLog (@"Successfully received the change theme notification!");
+        [self setThemeContainer:[notification object]];
+    }
 }
 
 - (void) viewDidLoad {

@@ -75,10 +75,7 @@ class SettingsViewController: UITableViewController {
             }
         }
         enableThemeSwitch.isOn = showThemeList
-        guard let tcc = UIApplication.shared.keyWindow?.rootViewController as? ThemeContainerController else {
-            fatalError("rootviewController should be of type ThemeContainerController")
-        }
-        tcc.themeContainer = Backpack.Theme.container(for: themeDefinition)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ThemeContainerChanged"), object: Theme.container(for:  themeDefinition))
         tableView.reloadData()
     }
 
