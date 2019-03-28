@@ -24,14 +24,14 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation BPKExampleApp
 
 - (void)sendEvent:(UIEvent *)event {
-    if ( event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake ) {
-        NSString * storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    if (event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake) {
+        NSString *storyboardName = @"Main";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
         UIViewController *rvc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
         [rvc presentViewController:vc animated:YES completion:nil];
     }
-    
+
     [super sendEvent:event];
 }
 
