@@ -34,6 +34,7 @@ class SettingsViewController: UITableViewController {
         enableThemeSwitch.addTarget(self, action: #selector(SettingsViewController.themingToggled), for: .touchUpInside)
 
         let theme = Settings.activeTheme()
+        // TODO DONT CALL THIS HERE. WE ONLY NEED TO LAYOUT, NOT RE-APPLY THE THEME
         applyTheme(theme: theme)
     }
 
