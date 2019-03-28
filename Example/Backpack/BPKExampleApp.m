@@ -18,6 +18,7 @@
 
 #import "BPKExampleApp.h"
 #import <Backpack/Color.h>
+#import <Backpack/Theme.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,9 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
         NSString *storyboardName = @"Main";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-        UIViewController *rvc = self.keyWindow.rootViewController;
+        BPKThemeContainerController *rvc = (BPKThemeContainerController *) self.keyWindow.rootViewController;
         NSLog(@"%@", rvc);
-        [rvc presentViewController:vc animated:YES completion:nil];
+
+        BPKThemeContainerController *modalController = [rvc createIdenticalThemeContainerForRootController:vc];
+        [rvc presentViewController:modalController animated:YES completion:nil];
     }
 
     [super sendEvent:event];

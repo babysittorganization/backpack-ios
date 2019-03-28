@@ -112,6 +112,15 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
+- (BPKThemeContainerController *)createIdenticalThemeContainerForRootController:
+(UIViewController *)rootController {
+    UIView *themeContainer = [[_themeContainer class] new];
+    BPKThemeContainerController *themeContainerController =
+    [[BPKThemeContainerController alloc] initWithThemeContainer:themeContainer
+                                             rootViewController:rootController];
+    return themeContainerController;
+}
+
 #pragma mark - Overriden methods
 
 - (nullable UIViewController *)childViewControllerForStatusBarStyle {
