@@ -76,7 +76,7 @@ class SettingsViewController: UITableViewController {
         }
         enableThemeSwitch.isOn = showThemeList
         guard let tcc = UIApplication.shared.keyWindow?.rootViewController as? ThemeContainerController else {
-            return
+            fatalError("rootviewController should be of type ThemeContainerController")
         }
         tcc.themeContainer = Backpack.Theme.container(for: themeDefinition)
         tableView.reloadData()

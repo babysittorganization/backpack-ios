@@ -26,7 +26,7 @@ class UITableViewSelectableCell: UITableViewCell {
     func setApplied(applied: Bool) {
         if applied {
             tickIcon.tintColor = Color.blue500
-            self.addSubview(tickIcon)
+            self.contentView.addSubview(tickIcon)
             tickIcon.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 tickIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor),
