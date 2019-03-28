@@ -19,7 +19,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@interface BPKShadow()
+@interface BPKShadow ()
 @property(nonatomic, strong) UIColor *color;
 @property(nonatomic) CGSize offset;
 @property(nonatomic) CGFloat opacity;
@@ -31,16 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation BPKShadow
 
 - (instancetype)initWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius {
-  self = [super init];
+    self = [super init];
 
-  if (self) {
-    self.color = color;
-    self.offset = offset;
-    self.opacity = opacity;
-    self.radius = radius;
-  }
+    if (self) {
+        self.color = color;
+        self.offset = offset;
+        self.opacity = opacity;
+        self.radius = radius;
+    }
 
-  return self;
+    return self;
 }
 
 - (void)applyToLayer:(CALayer *)layer {
@@ -50,18 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
     layer.shadowOpacity = self.opacity;
 }
 
-
 + (instancetype)shadowLg {
     static dispatch_once_t shadowLgOnceToken;
     static BPKShadow *shadowLg;
 
     dispatch_once(&shadowLgOnceToken, ^{
-        UIColor *color = [UIColor colorWithRed:0.145 green:0.125 blue:0.200 alpha:1];
-        shadowLg = [[BPKShadow alloc] initWithColor:color
-                                               offset:CGSizeMake(0, 4)
-                                              opacity:0.15
-                                               radius:16];
-
+      UIColor *color = [UIColor colorWithRed:0.145 green:0.125 blue:0.200 alpha:1];
+      shadowLg = [[BPKShadow alloc] initWithColor:color offset:CGSizeMake(0, 4) opacity:0.15 radius:16];
     });
 
     return shadowLg;
@@ -72,12 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
     static BPKShadow *shadowSm;
 
     dispatch_once(&shadowSmOnceToken, ^{
-        UIColor *color = [UIColor colorWithRed:0.145 green:0.125 blue:0.200 alpha:1];
-        shadowSm = [[BPKShadow alloc] initWithColor:color
-                                               offset:CGSizeMake(0, 1)
-                                              opacity:0.15
-                                               radius:3];
-
+      UIColor *color = [UIColor colorWithRed:0.145 green:0.125 blue:0.200 alpha:1];
+      shadowSm = [[BPKShadow alloc] initWithColor:color offset:CGSizeMake(0, 1) opacity:0.15 radius:3];
     });
 
     return shadowSm;

@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The `BPKShadow` class contains definitions for Backpack shaddows.
  * It has factory methods for creating instances of supported shaddows.
  */
-NS_SWIFT_NAME(Shadow) @interface BPKShadow: NSObject
+NS_SWIFT_NAME(Shadow) @interface BPKShadow : NSObject
 
 /**
  * The color of the shadow.
@@ -54,7 +54,6 @@ NS_SWIFT_NAME(Shadow) @interface BPKShadow: NSObject
  * @param layer The layer to apply the shadow to.
  */
 - (void)applyToLayer:(CALayer *)layer NS_SWIFT_NAME(apply(to:));
-
 
 /**
  * The Skyscanner large shadow.

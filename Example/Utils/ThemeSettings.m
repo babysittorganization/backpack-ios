@@ -21,7 +21,7 @@
 
 @implementation ThemeSettings
 
-+(void) setActiveTheme:(ThemeEnum)theme {
++ (void)setActiveTheme:(ThemeEnum)theme {
     id<BPKThemeDefinition> themeDefinition = [ThemeHelpers themeDefinitionForTheme:theme];
 
     NSString *themeName = [themeDefinition themeName];
@@ -29,17 +29,17 @@
     [NSUserDefaults.standardUserDefaults setValue:themeName forKey:@"theme"];
 }
 
-+(ThemeEnum) activeTheme {
++ (ThemeEnum)activeTheme {
     NSString *currentTheme = [NSUserDefaults.standardUserDefaults valueForKey:@"theme"];
 
-    if([currentTheme  isEqual: @"London"]) {
+    if ([currentTheme isEqual:@"London"]) {
         return london;
-    }else if([currentTheme  isEqual: @"Hong Kong"]) {
+    } else if ([currentTheme isEqual:@"Hong Kong"]) {
         return hongKong;
-    } else if([currentTheme  isEqual: @"Doha"]) {
+    } else if ([currentTheme isEqual:@"Doha"]) {
         return doha;
     }
-    
+
     return none;
 }
 

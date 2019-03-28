@@ -22,30 +22,30 @@
 
 @implementation ThemeHelpers
 
-+ (void) applyAllThemes {
++ (void)applyAllThemes {
     [BPKTheme applyTheme:[BPKDefaultTheme new]];
     [BPKTheme applyTheme:[BPKLondonTheme new]];
     [BPKTheme applyTheme:[BPKDohaTheme new]];
     [BPKTheme applyTheme:[BPKHongKongTheme new]];
 }
 
-+ (id<BPKThemeDefinition>) themeDefinitionForTheme:(ThemeEnum) theme {
++ (id<BPKThemeDefinition>)themeDefinitionForTheme:(ThemeEnum)theme {
     switch (theme) {
-        case none:
-            return [BPKDefaultTheme new];
-            break;
-        case london:
-            return [BPKLondonTheme new];
-            break;
-        case hongKong:
-            return [BPKHongKongTheme new];
-            break;
-        case doha:
-            return [BPKDohaTheme new];
-            break;
-        default:
-            return [BPKDefaultTheme new];
-            break;
+    case none:
+        return [BPKDefaultTheme new];
+        break;
+    case london:
+        return [BPKLondonTheme new];
+        break;
+    case hongKong:
+        return [BPKHongKongTheme new];
+        break;
+    case doha:
+        return [BPKDohaTheme new];
+        break;
+    default:
+        return [BPKDefaultTheme new];
+        break;
     }
 }
 

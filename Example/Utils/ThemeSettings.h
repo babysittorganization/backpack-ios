@@ -16,16 +16,16 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
 #import "ThemeHelpers.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ThemeSettings : NSObject
 
-+(void) setActiveTheme:(ThemeEnum) theme;
++ (void)setActiveTheme:(ThemeEnum)theme;
 
-+(ThemeEnum) activeTheme;
++ (ThemeEnum)activeTheme;
 
 @end
 

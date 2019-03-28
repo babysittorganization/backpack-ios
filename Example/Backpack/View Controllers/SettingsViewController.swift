@@ -75,7 +75,7 @@ class SettingsViewController: UITableViewController {
             }
         }
         enableThemeSwitch.isOn = showThemeList
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ThemeContainerChanged"), object: Theme.container(for:  themeDefinition))
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ThemeContainerChanged"), object: themeDefinition)
         tableView.reloadData()
     }
 

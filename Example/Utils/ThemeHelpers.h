@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
 #import <Backpack/Theme.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,9 +30,9 @@ typedef NS_ENUM(NSUInteger, ThemeEnum) {
     doha,
 };
 
-+ (void) applyAllThemes;
++ (void)applyAllThemes;
 
-+ (id<BPKThemeDefinition>) themeDefinitionForTheme:(ThemeEnum)theme;
++ (id<BPKThemeDefinition>)themeDefinitionForTheme:(ThemeEnum)theme;
 
 @end
 

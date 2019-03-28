@@ -29,14 +29,25 @@ NS_ASSUME_NONNULL_BEGIN
         NSString *storyboardName = @"Main";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
         UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-        BPKThemeContainerController *rvc = (BPKThemeContainerController *) self.keyWindow.rootViewController;
-        NSLog(@"%@", rvc);
+        BPKThemeContainerController *rvc = (BPKThemeContainerController *)self.keyWindow.rootViewController;
+        NSLog(@"hi\n\n");
+        NSLog(@"rvc: %@", rvc);
 
         BPKThemeContainerController *modalController = [rvc createIdenticalThemeContainerForRootController:vc];
-        [rvc presentViewController:modalController animated:YES completion:nil];
+        [[self topMostController] presentViewController:modalController animated:YES completion:nil];
     }
 
     [super sendEvent:event];
+}
+
+- (UIViewController *)topMostController {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+
+    return topController;
 }
 
 @end
