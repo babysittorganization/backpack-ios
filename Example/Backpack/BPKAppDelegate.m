@@ -17,6 +17,8 @@
  */
 
 #import "BPKAppDelegate.h"
+#import "../Utils/ThemeHelpers.h"
+#import "../Utils/ThemeSettings.h"
 
 #import <Backpack/Color.h>
 #import <Backpack/Theme.h>
@@ -31,29 +33,11 @@
         [UINavigationBar appearance].largeTitleTextAttributes = @{NSForegroundColorAttributeName : BPKColor.gray700};
     }
 
-    BPKDefaultTheme *defaultTheme = [BPKDefaultTheme new];
-    BPKLondonTheme *londTheme = [BPKLondonTheme new];
-    BPKDohaTheme *dohaTheme = [BPKDohaTheme new];
-    BPKHongKongTheme *hongKongTheme = [BPKHongKongTheme new];
+    [ThemeHelpers applyAllThemes];
 
-    id<BPKThemeDefinition> currentTheme = defaultTheme;
-
-    [BPKTheme applyTheme:defaultTheme];
-    [BPKTheme applyTheme:londTheme];
-    [BPKTheme applyTheme:dohaTheme];
-    [BPKTheme applyTheme:hongKongTheme];
-
-    NSString *savedTheme = [NSUserDefaults.standardUserDefaults valueForKey:@"theme"];
-
-    if ([savedTheme isEqual:@"London"]) {
-        currentTheme = londTheme;
-    } else if ([savedTheme isEqual:@"HongKong"]) {
-        currentTheme = hongKongTheme;
-    } else if ([savedTheme isEqual:@"Doha"]) {
-        currentTheme = dohaTheme;
-    }
-
-    UIView *themeContainer = [BPKTheme containerFor:currentTheme];
+    id<BPKThemeDefinition> activeTheme = [ThemeHelpers themeDefinitionForTheme:[ThemeSettings activeTheme]];
+    UIView *themeContainer = [BPKTheme containerFor:activeTheme];
+    
     BPKThemeContainerController *themeContainerController =
         [[BPKThemeContainerController alloc] initWithThemeContainer:themeContainer
                                                  rootViewController:self.window.rootViewController];

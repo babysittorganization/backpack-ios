@@ -25,12 +25,6 @@ class SettingsViewController: UITableViewController {
     var showThemeList: Bool = false
     @IBOutlet var selectableCells: [UITableViewSelectableCell]!
 
-    enum Theme: Int {
-        case london = 0
-        case hongKong = 1
-        case doha = 2
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,20 +33,8 @@ class SettingsViewController: UITableViewController {
         closeButton.action = #selector(SettingsViewController.btnAction)
         enableThemeSwitch.addTarget(self, action: #selector(SettingsViewController.themingToggled), for: .touchUpInside)
 
-        guard let theme = UserDefaults.standard.object(forKey: "theme") as? NSString else {
-            return
-        }
-
-        switch theme {
-        case "London":
-            applyTheme(theme: .london)
-        case "Hong Kong":
-            applyTheme(theme: .hongKong)
-        case "Doha":
-            applyTheme(theme: .doha)
-        default:
-            applyTheme(theme: nil)
-        }
+        let theme = ThemeSettings.activeTheme()
+        applyTheme(theme: theme)
     }
 
     @objc func btnAction() {
@@ -67,9 +49,9 @@ class SettingsViewController: UITableViewController {
         }
     }
 
-    func applyTheme(theme: Theme?) {
-        var themeToApply = "None"
+    func applyTheme(theme: ThemeEnum?) {
         var themeDefinition = DefaultTheme() as BPKThemeDefinition
+
         showThemeList = false
         enableThemeSwitch.isOn = false
         for cell in selectableCells {
@@ -77,20 +59,19 @@ class SettingsViewController: UITableViewController {
         }
 
         if theme != nil {
+            themeDefinition = ThemeHelpers.themeDefinition(forTheme: theme!)
             showThemeList = true
+            ThemeSettings.setActiveTheme(theme!)
+
             switch theme! {
             case .london:
-                themeToApply = "London"
-                themeDefinition = LondonTheme()
                 selectableCells[0].setApplied(applied: true)
             case .hongKong:
-                themeToApply = "Hong Kong"
-                 themeDefinition = HongKongTheme()
                 selectableCells[1].setApplied(applied: true)
             case .doha:
-                themeToApply = "Doha"
-                 themeDefinition = DohaTheme()
                 selectableCells[2].setApplied(applied: true)
+            case .none:
+                break
             }
         }
         enableThemeSwitch.isOn = showThemeList
@@ -98,14 +79,13 @@ class SettingsViewController: UITableViewController {
             return
         }
         tcc.themeContainer = Backpack.Theme.container(for: themeDefinition)
-        UserDefaults.standard.setValue(themeToApply, forKey: "theme")
         tableView.reloadData()
     }
 
-    // pragmamark tableView
+    // MARK: Table View
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        applyTheme(theme: Theme(rawValue: indexPath.row)!)
+        applyTheme(theme: ThemeEnum(rawValue: 1 + UInt(indexPath.row))!)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

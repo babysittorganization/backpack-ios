@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2019 Skyscanner Ltd
+ * Copyright 2018-2019 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,17 @@
  * limitations under the License.
  */
 
-import Foundation
-import UIKit
-import Backpack
+#import <Foundation/Foundation.h>
+#import "ThemeHelpers.h"
 
-@objcMembers
-class ThemingHelpers: NSObject {
+NS_ASSUME_NONNULL_BEGIN
 
-}
+@interface ThemeSettings : NSObject
+
++(void) setActiveTheme:(ThemeEnum) theme;
+
++(ThemeEnum) activeTheme;
+
+@end
+
+NS_ASSUME_NONNULL_END
