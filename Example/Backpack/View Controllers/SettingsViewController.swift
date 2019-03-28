@@ -33,7 +33,7 @@ class SettingsViewController: UITableViewController {
         closeButton.action = #selector(SettingsViewController.btnAction)
         enableThemeSwitch.addTarget(self, action: #selector(SettingsViewController.themingToggled), for: .touchUpInside)
 
-        let theme = ThemeSettings.activeTheme()
+        let theme = Settings.activeTheme()
         applyTheme(theme: theme)
     }
 
@@ -49,7 +49,7 @@ class SettingsViewController: UITableViewController {
         }
     }
 
-    func applyTheme(theme: ThemeEnum?) {
+    func applyTheme(theme: ThemeHelpers.ThemeEnum?) {
         var themeDefinition = DefaultTheme() as BPKThemeDefinition
 
         showThemeList = false
@@ -61,7 +61,7 @@ class SettingsViewController: UITableViewController {
         if theme != nil {
             themeDefinition = ThemeHelpers.themeDefinition(forTheme: theme!)
             showThemeList = true
-            ThemeSettings.setActiveTheme(theme!)
+            Settings.setActiveTheme(theme: theme!)
 
             switch theme! {
             case .london:
@@ -82,7 +82,7 @@ class SettingsViewController: UITableViewController {
     // MARK: Table View
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        applyTheme(theme: ThemeEnum(rawValue: 1 + UInt(indexPath.row))!)
+        applyTheme(theme: ThemeHelpers.ThemeEnum(rawValue: 1 + Int(indexPath.row))!)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

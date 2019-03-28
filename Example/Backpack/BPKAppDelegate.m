@@ -17,8 +17,7 @@
  */
 
 #import "BPKAppDelegate.h"
-#import "../Utils/ThemeHelpers.h"
-#import "../Utils/ThemeSettings.h"
+#import "Backpack_Native-Swift.h"
 
 #import <Backpack/Color.h>
 #import <Backpack/Theme.h>
@@ -35,7 +34,7 @@
 
     [ThemeHelpers applyAllThemes];
 
-    id<BPKThemeDefinition> activeTheme = [ThemeHelpers themeDefinitionForTheme:[ThemeSettings activeTheme]];
+    id<BPKThemeDefinition> activeTheme = [ThemeHelpers themeDefinitionForTheme:[Settings activeTheme]];
     UIView *themeContainer = [BPKTheme containerFor:activeTheme];
 
     BPKThemeContainerController *themeContainerController =

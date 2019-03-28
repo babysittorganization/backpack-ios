@@ -58,8 +58,8 @@
 		D2A350B622143F0700DEA01F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A350B522143F0700DEA01F /* Settings.storyboard */; };
 		D2A350BA2214435A00DEA01F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A350B92214435A00DEA01F /* SettingsViewController.swift */; };
 		D2A4F2DD224D324100D712E3 /* UIWindow+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4F2DC224D324100D712E3 /* UIWindow+Utility.swift */; };
-		D2AD6D78224CF5A40026F137 /* ThemeSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6D77224CF5A40026F137 /* ThemeSettings.m */; };
-		D2AD6D7B224CF5D40026F137 /* ThemeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6D7A224CF5D40026F137 /* ThemeHelpers.m */; };
+		D2AD6D78224CF5A40026F137 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6D77224CF5A40026F137 /* Settings.swift */; };
+		D2AD6D7B224CF5D40026F137 /* ThemeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AD6D7A224CF5D40026F137 /* ThemeHelpers.swift */; };
 		D2B8A01B2147FF6A002290DE /* PreviewCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8A01A2147FF6A002290DE /* PreviewCollectionViewHeader.swift */; };
 		D2C9CADF214685BC00AC30CF /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9CADE214685BC00AC30CF /* ColorsViewController.swift */; };
 		D2CD11E7215E4D83000CEA5C /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD11E6215E4D83000CEA5C /* CardsViewController.swift */; };
@@ -200,10 +200,8 @@
 		D2A350B522143F0700DEA01F /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D2A350B92214435A00DEA01F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D2A4F2DC224D324100D712E3 /* UIWindow+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Utility.swift"; sourceTree = "<group>"; };
-		D2AD6D76224CF5940026F137 /* ThemeSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeSettings.h; sourceTree = "<group>"; };
-		D2AD6D77224CF5A40026F137 /* ThemeSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeSettings.m; sourceTree = "<group>"; };
-		D2AD6D79224CF5D40026F137 /* ThemeHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeHelpers.h; sourceTree = "<group>"; };
-		D2AD6D7A224CF5D40026F137 /* ThemeHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeHelpers.m; sourceTree = "<group>"; };
+		D2AD6D77224CF5A40026F137 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		D2AD6D7A224CF5D40026F137 /* ThemeHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeHelpers.swift; sourceTree = "<group>"; };
 		D2B8A01A2147FF6A002290DE /* PreviewCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewHeader.swift; sourceTree = "<group>"; };
 		D2C9CADE214685BC00AC30CF /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		D2CD11E6215E4D83000CEA5C /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
@@ -470,10 +468,8 @@
 		D29F9C47221B1B3200773A6D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D2AD6D79224CF5D40026F137 /* ThemeHelpers.h */,
-				D2AD6D7A224CF5D40026F137 /* ThemeHelpers.m */,
-				D2AD6D76224CF5940026F137 /* ThemeSettings.h */,
-				D2AD6D77224CF5A40026F137 /* ThemeSettings.m */,
+				D2AD6D7A224CF5D40026F137 /* ThemeHelpers.swift */,
+				D2AD6D77224CF5A40026F137 /* Settings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -853,12 +849,12 @@
 				D22BB4A92244061C00A92BD9 /* BPKExampleApp.swift in Sources */,
 				D27EE92C2193163900C877EA /* ChipsViewController.swift in Sources */,
 				D2A350BA2214435A00DEA01F /* SettingsViewController.swift in Sources */,
-				D2AD6D7B224CF5D40026F137 /* ThemeHelpers.m in Sources */,
+				D2AD6D7B224CF5D40026F137 /* ThemeHelpers.swift in Sources */,
 				D26B8B86219EAC72006FE706 /* BadgesViewController.swift in Sources */,
 				3AA018EF215BE26600838FBB /* SpinnersViewController.swift in Sources */,
 				6055821721523A1300BF9F3E /* IconsViewController.swift in Sources */,
 				D6391600202CAAC8006E8329 /* BPKShadowViewController.m in Sources */,
-				D2AD6D78224CF5A40026F137 /* ThemeSettings.m in Sources */,
+				D2AD6D78224CF5A40026F137 /* Settings.swift in Sources */,
 				D6B8CEB6217786F100BA52E8 /* LabelsViewController.swift in Sources */,
 				D2161D522146B8F40097D0B1 /* ColorPreviewCollectionViewCell.swift in Sources */,
 				D248371522259BE9001FEBB7 /* UITableViewSelectableCell.swift in Sources */,
