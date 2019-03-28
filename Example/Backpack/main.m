@@ -18,7 +18,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BPKAppDelegate.h"
-#import "BPKExampleApp.h"
+#import <Backpack_Native-Swift.h>
 
 int main(int argc, char * argv[])
 {
